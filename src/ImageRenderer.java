@@ -6,17 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ImageRenderer extends JPanel {
-    private static final int WIDTH = 480;  // Set your image width here
-    private static final int HEIGHT = 360; // Set your image height here
-    private ArrayList<String> frames;      // Store each frame as a String
+    private static final int WIDTH = 480;
+    private static final int HEIGHT = 360;
+    private ArrayList<String> frames;
     private int currentFrame = 0;
     private Timer timer;
 
     public ImageRenderer(String frameFile) {
         frames = loadFrames(frameFile);
 
-        // Set up a timer to repaint at 30fps (33ms interval)
-        timer = new Timer(33, e -> {
+        timer = new Timer(33, _ -> {
             currentFrame = (currentFrame + 1) % frames.size();
             repaint();
         });
@@ -27,10 +26,8 @@ public class ImageRenderer extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
-
         String currentFrameData = frames.get(currentFrame);
         String[] rows = currentFrameData.split(",");
-
         for (int y = 0; y < rows.length; y++) {
             if (!rows[y].isEmpty()) {
                 String[] tokens = rows[y].split(" ");
@@ -45,7 +42,6 @@ public class ImageRenderer extends JPanel {
 
     private ArrayList<String> loadFrames(String frameFile) {
         ArrayList<String> frameData = new ArrayList<>();
-        StringBuilder frameBuilder = new StringBuilder();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(frameFile))) {
             String line;
@@ -60,10 +56,9 @@ public class ImageRenderer extends JPanel {
     }
 
     public static void main(String[] args) {
-        // Path to your combined txt file
         String frameFile = "/users/carter/Code/java/untitled/in/frames.txt";
 
-        JFrame frame = new JFrame("Image Renderer");
+        JFrame frame = new JFrame("LME Bad Apple!!");
         ImageRenderer renderer = new ImageRenderer(frameFile);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(WIDTH, HEIGHT);
