@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ImageRenderer extends JPanel {
-    private static final int WIDTH = 480;
-    private static final int HEIGHT = 360;
+    protected static final int WIDTH = 480;
+    protected static final int HEIGHT = 360;
     private ArrayList<String> frames;
     private int currentFrame = 0;
     private Timer timer;
@@ -56,13 +56,6 @@ public class ImageRenderer extends JPanel {
     }
 
     public static void main(String[] args) {
-        String frameFile = "/users/carter/Code/java/untitled/in/frames.txt";
-
-        JFrame frame = new JFrame("LME Bad Apple!!");
-        ImageRenderer renderer = new ImageRenderer(frameFile);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(WIDTH, HEIGHT);
-        frame.add(renderer);
-        frame.setVisible(true);
+        System.out.println("wrong class");
     }
 }
